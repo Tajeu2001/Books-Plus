@@ -9,6 +9,7 @@
             <img class="rounded-circle account-img d-block mx-auto" src="{{ user.profile.profile_picture.url }}">
             <h5 class="text-center mt-3">{{user.username}}</h5>
             <p class="text-center"> {{user.email}}</p>
+            <a href="{% url 'edit' user.username %}">Update Profile</a>
         </div>
         <div class="col-md-3"></div>
     </div>
