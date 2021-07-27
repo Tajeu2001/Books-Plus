@@ -4,9 +4,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from . forms import Registration
+from . forms import Registration, UpdateUserForm, UpdateUserProfileForm
 from django.http import HttpResponse, Http404,HttpResponseRedirect
-from .models import Profile
+from .models import Profile,Book
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -46,21 +46,38 @@ def index(request):
 
     return render (request, 'index.html')
 
-@login_required
-def profile(request):
-    current_user = request.user
-    projects = Project.objects.filter(user_id= current_user.id).all()
 
-    return render(request,'profile.html',{'current_user':current_user,'projects':projects})
+@login_required(login_url='login')
+def profile(request, username):
+    return render(request, 'profile.html')
 
-@login_required
-def update_profile(request):
-    current_user = request.user
+
+def user_profile(request, username):
+    user_prof = get_object_or_404(User, username=username)
+    if request.user == user_prof:
+        return redirect('profile', username=request.user.username)
+    params = {
+        'user_prof': user_prof,
+    }
+    return render(request, 'userprofile.html', params)
+
+
+@login_required(login_url='login')
+def edit_profile(request, username):
+    user = User.objects.get(username=username)
     if request.method == 'POST':
-        user_form = UpdateUserForm(request.POST,instance=request.user)
-        return redirect('profile')
-
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid() and prof_form.is_valid():
+            user_form.save()
+            prof_form.save()
+            return redirect('profile', user.username)
     else:
         user_form = UpdateUserForm(instance=request.user)
-        
-    return render(request, 'update_profile.html', {'user_form':user_form , })   
+        prof_form = UpdateUserProfileForm(instance=request.user.profile)
+    params = {
+        'user_form': user_form,
+        'prof_form': prof_form
+    }
+    return render(request, 'edit.html', params)
+
