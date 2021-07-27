@@ -1,0 +1,39 @@
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark  " style="background-color: rgb(128, 128, 128);">
+  <a class="navbar-brand header home" href="{% url 'index' %}">Books Plus</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item active">
+
+</ul>
+
+{% if user.is_authenticated %}
+<ul class="navbar-nav ml-auto nav-flex-icons"> 
+<li class="nav-item">
+<img class="rounded-circle nav-img" src="" alt="" style="height: 40px">
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle header" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+  aria-expanded="false" style="font-size: 20px; margin-right: 5rem; font-weight: 700;" href="">{{user.username}}
+</a>
+<div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333"> 
+  <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+</div>
+</li>
+<li class="nav-item active" style="padding-top: 10px"></li>
+
+</ul>
+{% else %}
+<ul class="navbar-nav ml-auto nav-flex-icons">
+<li class="nav-item active">
+<a class="nav-link" href="{% url 'login' %}">LogIn/Register</a>
+</li>
+
+</ul>
+{% endif %}
+
+</div>
+</nav>

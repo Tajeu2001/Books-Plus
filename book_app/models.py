@@ -37,7 +37,7 @@ class Profile(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=100)
-    description = models. Charfield()
+    description = models. CharField(max_length=500)
     author = models.CharField(max_length=100)
     year = models.CharField(max_length=100)
     publisher = models.CharField(max_length=200)
