@@ -43,7 +43,7 @@ class Book(models.Model):
     year = models.CharField(max_length=100)
     publisher = models.CharField(max_length=200)
     cover = CloudinaryField('image')
-    pdf = CloudinaryField('pdf')
+    pdf = CloudinaryField('PDF')
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts')
     def __str__(self):
         return self.title

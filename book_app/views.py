@@ -108,5 +108,5 @@ def search(request):
     return render(request,'search.html',{'current_user':current_user,'books':searched_books})
 
 @login_required
-def about(request)
+def about(request):
     return render(request,'about.html')     

@@ -4,3 +4,12 @@ body {
   font-family: 'Yatra One', cursive;
 }
 
+.bg-index{
+  background-image: url('/static/images/annie-spratt-OWq8w3BYMFY-unsplash.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 45rem;
+  background-color: rgba(0, 0, 0, 0.726);
+  background-blend-mode:darken;
+  color:white;
+}

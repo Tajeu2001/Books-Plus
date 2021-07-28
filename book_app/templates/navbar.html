@@ -1,4 +1,4 @@
-<nav class="mb-1 navbar navbar-expand-lg navbar-light  " style="background-color: rgb(128, 128, 128);">
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark  " style="background-color: rgb(6, 84, 87);">
   <a class="navbar-brand header home" href="{% url 'index' %}">Books Plus</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
 aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,6 +15,13 @@ aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Tog
 <li class="nav-item">
 <img class="rounded-circle nav-img" src="" alt="" style="height: 40px">
 </li>
+
+<form class="form-inline" role="search" action="{% url 'search' %}">
+  <div class="md-form my-0">
+    <input class="form-control mr-sm-2" type="text" placeholder="Search book" aria-label="Search" name="book">
+    <button class="btn peach-gradient btn-sm" type="submit"><i class="fas fa-search"></i></button>
+  </div>
+</form>
 <li><a href="{% url 'booklist'%}">BookShelf</a></li>
 <li class="nav-item dropdown">
 <a class="nav-link dropdown-toggle header" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
@@ -31,12 +38,7 @@ aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Tog
 <li class="nav-item active" style="padding-top: 10px"></li>
 
 </ul>
-<form class="form-inline" role="search" action="{% url 'search' %}">
-  <div class="md-form my-0">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search project" aria-label="Search" name="book">
-    <button class="btn peach-gradient btn-sm" type="submit"><i class="fas fa-search"></i></button>
-  </div>
-</form>
+
 {% else %}
 <ul class="navbar-nav ml-auto nav-flex-icons">
 <li class="nav-item active">

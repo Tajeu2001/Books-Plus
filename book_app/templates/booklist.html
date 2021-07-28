@@ -2,7 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container " id="index">
+<div class="container-fluid " id="index">
     <div class="row">
 
 
@@ -34,17 +34,25 @@
     <button class="btn btn-sm btn-outline-primary ml-4 mb-3 create" data-toggle="modal" data-target="#imageUpload">
         Upload Book
     </button>
-    
-		{% for book in books %}
-    <img src="{{book.cover.url}}" alt="cover"> 
-		<ul>
-			<span><li>{{book.title}} title</li></span>
-			<li>{{book.author}}</li>
-			<li>{{book.description}}</li>
-			<li>{{book.year}}</li>
-			<a href="{{ book.pdf.url }}" class="btn btn-outline-primary" target="_blank">View PDF</a>
-			<a href="{{ book.pdf.url }}" download class="btn btn-outline-success">Download PDF</a>
-			<li></li>
-		</ul>
-    {% endfor %}
-{% endblock %}		
+
+
+    <div class="row">
+        
+            {% for book in books %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{book.cover.url}}" alt="cover">
+                    <p>{{book.title}} title</p>
+                    <p>{{book.author}}</p>
+                    <p>{{book.description}}</p>
+                    <p>{{book.year}}</p>
+                    <a href="{{ book.pdf.url }}" class="btn btn-outline-primary" target="_blank">View PDF</a>
+                    <a href="{{ book.pdf.url }}" download class="btn btn-outline-success">Download PDF</a>
+                </div>
+            </div>
+            {% endfor %}
+        
+    </div>
+</div>
+
+{% endblock %}
