@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="container-fluid">
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            {% if books %}
+            <h1 class="text-center">SEARCH RESULTS</h1>
+            {% else %}
+            <h1 class="text-center">NO SUCH BOOK</h1>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        {% for book in books %}
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="view overlay">
+                    <img class="card-img-top" src="{{book.cover.url}}">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title"><a style="color: inherit; text-decoration: none;" href="">{{book.title}}</a></h3>
+                    <p class="card-text">{{book.description|truncatechars:80}}</p>
+                    <a style="color: inherit; text-decoration: none;" href="{{book.pdf.url}}"><p class="card-text">View live site  <i class="fas fa-angle-double-right"></i></p></a>
+                    <p class="card-text" style="text-align: right;">{{book.year}} </p>
+                </div>
+                <div class="card-footer">
+                    <p> BY <a href="{% url 'profile' user.username %}" style="text-decoration: none;color: inherit;">{{book.user.username}}   <img  src="{{book.user.profile.profile_picture.url}}" width="20" height="20" class="rounded-circle border userimage"></a></p>
+                </div>
+            </div>
+            <br>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

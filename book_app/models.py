@@ -43,8 +43,13 @@ class Book(models.Model):
     year = models.CharField(max_length=100)
     publisher = models.CharField(max_length=200)
     cover = CloudinaryField('image')
-    pdf = models.FileField(upload_to='bookapp/pdfs/')
-
+    pdf = CloudinaryField('pdf')
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='posts')
     def __str__(self):
         return self.title
 
+
+    @classmethod
+    def search_project(cls,search_term):
+        books = Book.objects.filter(title__icontains=search_term).all()
+        return books

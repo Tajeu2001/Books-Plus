@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from . forms import Registration, UpdateUserForm, UpdateUserProfileForm,AddBookForm
+from . forms import Registration, UpdateUserForm, UpdateUserProfileForm,BookForm
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 from .models import Profile,Book
 from django.contrib.auth.models import User
@@ -83,28 +83,30 @@ def edit_profile(request, username):
 
 
 @login_required
-def upload_book_form(request):
-	return render(request, 'upload_book.html')
+def booklist(request):
+    books = Book.objects.all()
+    users = User.objects.exclude(id=request.user.id)
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            upload = form.save(commit=False)
+            upload.user = request.user.profile
+            upload.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = BookForm()
+    return render(request, 'booklist.html', {'books': books,'form': form,'users': users,})
+
 
 @login_required
-def upload_book(request):
-	if request.method == 'POST':
-		title = request.POST['title']
-		author = request.POST['author']
-		year = request.POST['year']
-		publisher = request.POST['publisher']
-		desc = request.POST['desc']
-		cover = request.FILES['cover']
-		pdf = request.FILES['pdf']
-		current_user = request.user
-		user_id = current_user.id
-		username = current_user.username
+def search(request):
+    current_user = request.user
+    all_books = Book.objects.all()
+    parameter = request.GET.get('book')
+    searched_books = Book.objects.filter(title__icontains=parameter)
 
-		a = Book(title=title, author=author, year=year, publisher=publisher, 
-			desc=desc, cover=cover, pdf=pdf, uploaded_by=username, user_id=user_id)
-		a.save()
-		messages.success(request, 'Book was uploaded successfully')
-		return redirect('publisher')
-	else:
-        messages.error(request, 'Book was not uploaded successfully')
-        return redirect('upload_book_form')	
+    return render(request,'search.html',{'current_user':current_user,'books':searched_books})
+
+@login_required
+def about(request)
+    return render(request,'about.html')     
