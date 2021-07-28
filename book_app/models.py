@@ -43,6 +43,7 @@ class Book(models.Model):
     year = models.CharField(max_length=100)
     publisher = models.CharField(max_length=200)
     cover = CloudinaryField('image')
+    pdf = models.FileField(upload_to='bookapp/pdfs/')
 
     def __str__(self):
         return self.title

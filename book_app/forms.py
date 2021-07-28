@@ -24,3 +24,9 @@ class UpdateUserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = [ 'location', 'profile_picture', 'bio', 'contact','location']
+
+
+class AddBookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = ('title', 'author', 'publisher', 'year', 'uploaded_by')    

@@ -10,4 +10,5 @@ urlpatterns = [
   path('',views.index, name='index'),
   path('profile/<username>/', views.profile, name='profile'),
   path('profile/<username>/settings', views.edit_profile, name='edit'),
+  path('upload',views.upload_book , name = 'upload'),
 ]
