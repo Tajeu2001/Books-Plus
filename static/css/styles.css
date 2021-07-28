@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yatra+One&family=Zen+Tokyo+Zoo&display=swap');
+body {
+  background-image: url('../images/image1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.692);
+  background-blend-mode:darken;
+  font-family: 'Yatra One', cursive;
+}
+
+.home {
+  font-weight: 900;
+  margin-left: 5rem;
+  font-size: 30px;
+}
+
+.add {
+  margin-top: 5rem;
+  margin-left: 30%;
+  
+}
+
+.index-hood {
+  background-color: #e29d93;
+  color:black;
+  margin-top: 3rem;
+}
+
+.hood-form {
+  background-color: #e29e93;
+  color:black;
+  padding: 10px;
+
+}
+
+.newhood {
+  margin-top: 5rem;
+  color:black;
+}
+
+.hood-info {
+  background-color:  #e29e93;
+  color: black;
+  margin-top: 5rem;
+  font-size: 20px;
+
+}
+
+.post {
+  background-color:  #e29e93;
+}
+
+.business {
+  background-color:  #e29e93;
+}
