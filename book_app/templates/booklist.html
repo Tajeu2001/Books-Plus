@@ -42,7 +42,7 @@
             <div class="col-md-3">
                 <div class="card">
                     <img src="{{book.cover.url}}" alt="cover">
-                    <p>{{book.title}} title</p>
+                    <h3><a href="{% url 'book' book_id=book.id  %}">{{book.title}} title</a></h3>
                     <p>{{book.author}}</p>
                     <p>{{book.description}}</p>
                     <p>{{book.year}}</p>

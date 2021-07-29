@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import  Profile,Book
+from .models import  Profile,Book,Rating
 
 
     
@@ -31,4 +31,7 @@ class BookForm(forms.ModelForm):
         model = Book
         fields = ('title', 'author', 'description','publisher','cover', 'year','pdf')    
 
-        
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        exclude = ['overall_score','book','user']        

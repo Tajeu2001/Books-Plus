@@ -12,5 +12,6 @@ urlpatterns = [
   path('profile/<username>/settings', views.edit_profile, name='edit'),
   path('booklist',views.booklist , name = 'booklist'),
   path('search/',views.search,name='search'),
-  path('about/', views.about, name='about'),
+  path('book/<book_id>', views.book, name='book'),
+  path('rate/<book_id>',views.rate, name='rate'),
 ]

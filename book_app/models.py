@@ -50,6 +50,20 @@ class Book(models.Model):
 
 
     @classmethod
-    def search_project(cls,search_term):
+    def search_book(cls,search_term):
         books = Book.objects.filter(title__icontains=search_term).all()
         return books
+
+class Rating(models.Model):
+    rating = (1, 1),(2, 2),(3, 3),(4, 4),(5, 5),(6, 6),(7, 7),(8, 8),(9, 9),(10, 10)
+
+    design = models.IntegerField(choices=rating,blank=True,default=0)
+    usability = models.IntegerField(choices=rating, blank=True,default=0)
+    content = models.IntegerField(choices=rating, blank=True,default=0)
+    overall_score = models.IntegerField(blank=True,default=0)
+    book = models.ForeignKey(Book,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    comment = models.TextField()
+
+    def __str__(self):
+        return f'{self.book.title} ratings'

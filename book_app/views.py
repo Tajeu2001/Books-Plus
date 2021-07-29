@@ -4,10 +4,12 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from . forms import Registration, UpdateUserForm, UpdateUserProfileForm,BookForm
+from . forms import Registration, UpdateUserForm, UpdateUserProfileForm,BookForm,RatingForm
 from django.http import HttpResponse, Http404,HttpResponseRedirect
-from .models import Profile,Book
+from .models import Profile,Book,Rating
 from django.contrib.auth.models import User
+from django.db.models import Avg
+
 
 # Create your views here.
 def register(request):
@@ -109,4 +111,33 @@ def search(request):
 
 @login_required
 def about(request):
-    return render(request,'about.html')     
+    return render(request,'about.html')
+
+@login_required
+def book(request ,book_id):
+    current_user = request.user
+    book = Book.objects.filter(id=book_id).first()
+    ratings = Rating.objects.filter(book_id=book_id)
+    usability_rating = Rating.objects.filter(book_id=book_id).aggregate(Avg('usability'))
+    content_rating = Rating.objects.filter(book_id=book_id).aggregate(Avg('content'))
+    design_rating = Rating.objects.filter(book_id=book_id).aggregate(Avg('design'))
+
+    title = f'{book.title} details'
+    return render(request,'book.html',{'title':title,'book':book,'current_user':current_user,'ratings':ratings,'usability_rating':usability_rating,'content_rating':content_rating,'design_rating':design_rating})   
+
+@login_required(login_url='/accounts/login/')
+def rate(request,book_id):
+    current_user = request.user
+    book = Book.objects.filter(id=book_id).first()
+    if request.method == 'POST':
+        rate_form = RatingForm(request.POST)
+        if rate_form.is_valid():
+            rating = rate_form.save(commit=False)
+            rating.book = book
+            rating.user = current_user
+            rating.save()
+            return redirect('book', book_id)
+    else:
+        rate_form = RatingForm()
+
+    return render(request, 'rate.html',{'current_user':current_user,'rate_form':rate_form,'book':book})
