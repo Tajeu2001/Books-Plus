@@ -10,7 +10,7 @@
 		<p>{{book.author}}</p>
 		<p>{{book.description}}</p>
 		<p>{{book.year}}</p>
-		<a href="{{ book.pdf.url }}" class="btn btn-outline-primary" target="_blank">View PDF</a>
+		<a href="{{ book.pdf.url }}" class="btn btn-outline-primary" target="_blank">Read Book</a>
 		<a href="{{ book.pdf.url }}" download class="btn btn-outline-success">Download PDF</a>
 
 
@@ -35,6 +35,7 @@
             <h6>CONTENT</h6>
             <p>{{content_rating.content__avg}}</p>
         </div>
+        <p>{{rating.comment}} comment</p>
     </div>
     <div class="row">
         <div class="col-md-12">

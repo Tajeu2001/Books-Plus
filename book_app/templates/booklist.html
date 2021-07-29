@@ -44,10 +44,9 @@
                     <img src="{{book.cover.url}}" alt="cover">
                     <h3><a href="{% url 'book' book_id=book.id  %}">{{book.title}} title</a></h3>
                     <p>{{book.author}}</p>
-                    <p>{{book.description}}</p>
+                    <p>{{book.description|truncatechars:80}}</p>
                     <p>{{book.year}}</p>
-                    <a href="{{ book.pdf.url }}" class="btn btn-outline-primary" target="_blank">View PDF</a>
-                    <a href="{{ book.pdf.url }}" download class="btn btn-outline-success">Download PDF</a>
+                    
                 </div>
             </div>
             {% endfor %}
