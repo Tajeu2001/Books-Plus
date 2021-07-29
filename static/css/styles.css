@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yatra+One&family=Zen+Tokyo+Zoo&display=swap');
 body {
-  
+  background-color: #DDDDDD;
   font-family: 'Yatra One', cursive;
 }
 
 .bg-index{
-  background-image: url('/static/images/annie-spratt-OWq8w3BYMFY-unsplash.jpg');
+  background-image: url('/static/images/olia-gozha-J4kK8b9Fgj8-unsplash.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 45rem;
-  background-color: rgba(0, 0, 0, 0.726);
+  background-color: #333333a8;
   background-blend-mode:darken;
   color:white;
 }
