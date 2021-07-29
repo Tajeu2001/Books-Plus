@@ -1,5 +1,6 @@
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark  " style="background-color: #818181;">
-  <a class="navbar-brand header home" href="{% url 'index' %}">Books Plus</a>
+  <img src="/static/images/toppng.com-transparent-orange-butterfly-600x589.png" alt="" width="3%" height="3%" style="margin-left: 5rem;" >
+  <a class="navbar-brand header home" href="{% url 'index' %}" style="font-size: 2rem; font-weight: 900;">Books Plus</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
 aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
@@ -9,6 +10,7 @@ aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Tog
 <li class="nav-item active">
 
 </ul>
+<a style="font-size: 20px; margin-right: 18rem;  color:white;font-weight: 400; " href="{% url 'booklist'%}">BookShelf</a>
 
 {% if user.is_authenticated %}
 <ul class="navbar-nav ml-auto nav-flex-icons"> 
@@ -22,7 +24,7 @@ aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Tog
     <button class="btn peach-gradient btn-sm" type="submit"><i class="fas fa-search"></i></button>
   </div>
 </form>
-<li><a style="font-size: 20px; margin-right: 7rem; margin-top: 3rem; padding-top: 10px; color:white;font-weight: 700;" href="{% url 'booklist'%}">BookShelf</a></li>
+
 <li class="nav-item dropdown">
 <a class="nav-link dropdown-toggle header" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
   aria-expanded="false" style="font-size: 20px; margin-right: 5rem; font-weight: 700;" href="">{{user.username}}

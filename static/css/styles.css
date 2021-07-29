@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Yatra+One&family=Zen+Tokyo+Zoo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+
 body {
-  background-color: #DDDDDD;
+  background-color: #dddddd65;
   font-family: 'Yatra One', cursive;
 }
 
@@ -9,9 +11,11 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   height: 46rem;
-  background-color: #333333a1;
+  background-color: #3333335b;
   background-blend-mode:darken;
   color:white;
+  text-align: center;
+  font-family: 'Style Script', cursive;
 }
 
 .booklist {
@@ -23,6 +27,8 @@ body {
 }
 
 .profilecard {
-  background-color: rgba(128, 128, 128, 0.116);
+  background-color: #818181b0;
   width:14rem;
+  box-shadow:0 0 2px 2px #f77f00;
+  padding:2rem;
 }

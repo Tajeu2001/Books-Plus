@@ -4,12 +4,12 @@
 {% load mathfilters %}
 {% block content %}
 <div class="container">
-	<div class="card">
+	<div class="card" style="padding:4rem;">
 		<img src="{{book.cover.url}}" alt="cover" style="height:35rem;">
-		<p>Title:{{book.title}}</p>
-		<p>Author:{{book.author}}</p>
-		<p>Description:{{book.description}}</p>
-		<p>Year of Publication{{book.year}}</p>
+		<p>Title:{{book.title}}</p><hr>
+		<p>Author:{{book.author}}</p><hr>
+		<p>Description:{{book.description}}</p><hr>
+		<p>Year of Publication{{book.year}}</p><hr>
         <div class="row">
             <div class="col-md-6">
                 <a href="{{ book.pdf.url }}" class="btn btn-outline-primary" target="_blank" style="width: 50%; float:right;">Read Book</a>
@@ -18,6 +18,7 @@
                 <a href="{{ book.pdf.url }}" download class="btn btn-outline-success" style="width:50%; ">Download PDF</a>
             </div>
         </div>
+        <hr>
 
 
 
@@ -52,13 +53,13 @@
     {% else %}
     <div class="row">
         <div class="col-md-12">
-            <h5 class="indigo-text h5 mb-4 text-center">THERE ARE NO RATINGS YET</h5>
+            <h5 class="indigo-text h5 mb-4 text-center">There are no reviews yet</h5>
         </div>
     </div>
     {% endif %}
     <div class="row">
         <div class="col-md-12">
-            <a href="{% url 'rate' book_id=book.id %}" class="btn blue-gradient">RATE THIS PROJECT</a>
+            <a href="{% url 'rate' book_id=book.id %}" class="btn peach-gradient">Review this book</a>
         </div>
     </div>
     </div>

@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load mathfilters %}
 {% load bootstrap4 %}
-
+{% include 'book.html'%}
 {% block content %}
-<div class="container-fluid">
+<div class="container">
     <hr>
     <div class="row">
         <div class="col-md-12">
@@ -16,25 +19,64 @@
     <hr>
     <div class="row">
         {% for book in books %}
-        <div class="col-md-4">
-            <div class="card mb-3">
-                <div class="view overlay">
-                    <img class="card-img-top" src="{{book.cover.url}}">
-                    <a>
-                        <div class="mask rgba-white-slight"></div>
-                    </a>
+        <div class="card" style="padding:4rem;">
+            <img src="{{book.cover.url}}" alt="cover" style="height:20rem;">
+            <p>Title:{{book.title}}</p><hr>
+            <p>Author:{{book.author}}</p><hr>
+            <p>Description:{{book.description}}</p><hr>
+            <p>Year of Publication{{book.year}}</p><hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{ book.pdf.url }}" class="btn btn-outline-primary" target="_blank">Read Book</a>
                 </div>
-                <div class="card-body">
-                    <h4 class="card-title"><a style="color: inherit; text-decoration: none;" href="">{{book.title}}</a></h3>
-                    <p class="card-text">{{book.description|truncatechars:80}}</p>
-                    <a style="color: inherit; text-decoration: none;" href="{{book.pdf.url}}"><p class="card-text">View live site  <i class="fas fa-angle-double-right"></i></p></a>
-                    <p class="card-text" style="text-align: right;">{{book.year}} </p>
-                </div>
-                <div class="card-footer">
-                    <p> BY <a href="{% url 'profile' user.username %}" style="text-decoration: none;color: inherit;">{{book.user.username}}   <img  src="{{book.user.profile.profile_picture.url}}" width="20" height="20" class="rounded-circle border userimage"></a></p>
+                <div class="col-md-6">
+                    <a href="{{ book.pdf.url }}" download class="btn btn-outline-success" >Download PDF</a>
                 </div>
             </div>
-            <br>
+            <hr>
+
+            {% if ratings %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="indigo-text h5 mb-4 text-center">RATINGS</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    <h6>entertainment</h6>
+                    <p>{{entertainment_rating.entertainment__avg}}</p>
+                </div>
+                <div class="col-md-2">
+                    <h6>characters</h6>
+                    <p>{{characters_rating.characters__avg}}</p>
+                </div>
+                <div class="col-md-2">
+                    <h6>plot</h6>
+                    <p>{{plot_rating.plot__avg}}</p>
+                </div>
+                <p>{{rating_form.comment}} comment</p>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h6 class="text-center">OVERALL SCORE</h6>
+                    <p>{{ entertainment_rating.entertainment__avg| add:characters_rating.characters__avg| add:plot_rating.plot__avg| div:3| truncatechars:6 }}</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="indigo-text h5 mb-4 text-center">There are no reviews yet</h5>
+                </div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{% url 'rate' book_id=book.id %}" class="btn peach-gradient">Review this book</a>
+                </div>
+            </div>
+            </div>
+        </div>    
         </div>
         {% endfor %}
     </div>
