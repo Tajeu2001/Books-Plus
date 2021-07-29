@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="card">
 		<img src="{{book.cover.url}}" alt="cover">
-		<p>{{book.title}} title</p>
+		<p>{{book.title}}</p>
 		<p>{{book.author}}</p>
 		<p>{{book.description}}</p>
 		<p>{{book.year}}</p>
@@ -24,23 +24,23 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-2">
-            <h6>USABILITY</h6>
-            <p>{{usability_rating.usability__avg}}</p>
+            <h6>entertainment</h6>
+            <p>{{entertainment_rating.entertainment__avg}}</p>
         </div>
         <div class="col-md-2">
-            <h6>DESIGN</h6>
-            <p>{{design_rating.design__avg}}</p>
+            <h6>characters</h6>
+            <p>{{characters_rating.characters__avg}}</p>
         </div>
         <div class="col-md-2">
-            <h6>CONTENT</h6>
-            <p>{{content_rating.content__avg}}</p>
+            <h6>plot</h6>
+            <p>{{plot_rating.plot__avg}}</p>
         </div>
-        <p>{{rating.comment}} comment</p>
+        <p>{{rating_form.comment}} comment</p>
     </div>
     <div class="row">
         <div class="col-md-12">
             <h6 class="text-center">OVERALL SCORE</h6>
-            <p>{{ usability_rating.usability__avg| add:design_rating.design__avg| add:content_rating.content__avg| div:3| truncatechars:6 }}</p>
+            <p>{{ entertainment_rating.entertainment__avg| add:characters_rating.characters__avg| add:plot_rating.plot__avg| div:3| truncatechars:6 }}</p>
         </div>
     </div>
     {% else %}
@@ -55,6 +55,6 @@
             <a href="{% url 'rate' book_id=book.id %}" class="btn blue-gradient">RATE THIS PROJECT</a>
         </div>
     </div>
-  </div>
+    </div>
 </div>
 {% endblock %}

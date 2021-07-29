@@ -40,12 +40,12 @@
         
             {% for book in books %}
             <div class="col-md-3">
-                <div class="card">
+                <div class="card booklist">
                     <img src="{{book.cover.url}}" alt="cover">
-                    <h3><a href="{% url 'book' book_id=book.id  %}">{{book.title}} title</a></h3>
-                    <p>{{book.author}}</p>
-                    <p>{{book.description|truncatechars:80}}</p>
-                    <p>{{book.year}}</p>
+                    <hr>
+                    <h3 ><a href="{% url 'book' book_id=book.id  %}" style="color:#f77f00">{{book.title}} title</a></h3>
+                    <hr>
+                    <p>Author: {{book.author}}</p>
                     
                 </div>
             </div>

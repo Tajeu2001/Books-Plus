@@ -118,14 +118,14 @@ def book(request ,book_id):
     current_user = request.user
     book = Book.objects.filter(id=book_id).first()
     ratings = Rating.objects.filter(book_id=book_id)
-    usability_rating = Rating.objects.filter(book_id=book_id).aggregate(Avg('usability'))
-    content_rating = Rating.objects.filter(book_id=book_id).aggregate(Avg('content'))
-    design_rating = Rating.objects.filter(book_id=book_id).aggregate(Avg('design'))
+    entertainment_rating = Rating.objects.filter(book_id=book_id).aggregate(Avg('entertainment'))
+    characters_rating = Rating.objects.filter(book_id=book_id).aggregate(Avg('characters'))
+    plot_rating = Rating.objects.filter(book_id=book_id).aggregate(Avg('plot'))
 
     title = f'{book.title} details'
-    return render(request,'book.html',{'title':title,'book':book,'current_user':current_user,'ratings':ratings,'usability_rating':usability_rating,'content_rating':content_rating,'design_rating':design_rating})   
+    return render(request,'book.html',{'title':title,'book':book,'current_user':current_user,'ratings':ratings,'entertainment_rating':entertainment_rating,'characters_rating':characters_rating,'plot_rating':plot_rating})   
 
-@login_required(login_url='/accounts/login/')
+@login_required
 def rate(request,book_id):
     current_user = request.user
     book = Book.objects.filter(id=book_id).first()

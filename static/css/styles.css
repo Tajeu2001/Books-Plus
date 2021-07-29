@@ -9,7 +9,13 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   height: 45rem;
-  background-color: #333333a8;
+  background-color: #333333b9;
   background-blend-mode:darken;
   color:white;
+}
+
+.booklist {
+  height: 30rem;
+  padding:2rem;
+  box-shadow:0 0 2px 2px #f77f00;
 }
