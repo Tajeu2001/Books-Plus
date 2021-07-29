@@ -5,13 +5,19 @@
 {% block content %}
 <div class="container">
 	<div class="card">
-		<img src="{{book.cover.url}}" alt="cover">
-		<p>{{book.title}}</p>
-		<p>{{book.author}}</p>
-		<p>{{book.description}}</p>
-		<p>{{book.year}}</p>
-		<a href="{{ book.pdf.url }}" class="btn btn-outline-primary" target="_blank">Read Book</a>
-		<a href="{{ book.pdf.url }}" download class="btn btn-outline-success">Download PDF</a>
+		<img src="{{book.cover.url}}" alt="cover" style="height:35rem;">
+		<p>Title:{{book.title}}</p>
+		<p>Author:{{book.author}}</p>
+		<p>Description:{{book.description}}</p>
+		<p>Year of Publication{{book.year}}</p>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{ book.pdf.url }}" class="btn btn-outline-primary" target="_blank" style="width: 50%; float:right;">Read Book</a>
+            </div>
+            <div class="col-md-6">
+                <a href="{{ book.pdf.url }}" download class="btn btn-outline-success" style="width:50%; ">Download PDF</a>
+            </div>
+        </div>
 
 
 

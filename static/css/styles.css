@@ -8,14 +8,21 @@ body {
   background-image: url('/static/images/olia-gozha-J4kK8b9Fgj8-unsplash.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 45rem;
-  background-color: #333333b9;
+  height: 46rem;
+  background-color: #333333a1;
   background-blend-mode:darken;
   color:white;
 }
 
 .booklist {
+  background-color: rgba(128, 128, 128, 0.137);
   height: 30rem;
   padding:2rem;
   box-shadow:0 0 2px 2px #f77f00;
+
+}
+
+.profilecard {
+  background-color: rgba(128, 128, 128, 0.116);
+  width:14rem;
 }
