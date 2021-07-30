@@ -1,6 +1,6 @@
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark  " style="background-color: #818181;">
   <img src="/static/images/toppng.com-transparent-orange-butterfly-600x589.png" alt="" width="3%" height="3%" style="margin-left: 1rem;" >
-  <a class="navbar-brand header home" href="{% url 'index' %}" style="font-size: 2rem; font-weight: 900;">Books Plus</a>
+  <a class="navbar-brand header home" href="{% url 'index' %}" style="font-size: 1rem; font-weight: 900;">Books Plus</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
 aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,7 @@ aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Tog
 <li class="nav-item active">
 
 </ul>
-<a style="font-size: 20px; margin-right: 18rem;  color:white;font-weight: 400; " href="{% url 'booklist'%}">BookShelf</a>
+<a style="font-size: 15px; margin-right: 15rem;  color:white;font-weight: 400; " href="{% url 'booklist'%}">BookShelf</a>
 
 {% if user.is_authenticated %}
 <ul class="navbar-nav ml-auto nav-flex-icons"> 
@@ -20,7 +20,7 @@ aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Tog
 
 <form class="form-inline" role="search" action="{% url 'search' %}">
   <div class="md-form my-0" style="margin-right: 23rem;">
-    <input class="form-control mr-sm-2" type="text" placeholder="Search book" aria-label="Search" name="book">
+    <input class="form-control " type="text" placeholder="Search book" aria-label="Search" name="book">
     <button class="btn peach-gradient btn-sm" type="submit"><i class="fas fa-search"></i></button>
   </div>
 </form>
