@@ -10,7 +10,7 @@
 		
 		<p>Author:{{book.author}}</p><hr>
 		<p>Description:{{book.description}}</p><hr>
-		<p>Year of Publication{{book.year}}</p><hr>
+		<p>Year of Publication:{{book.year}}</p><hr>
         <div class="row">
             <div class="col-md-6">
                 <a href="{{ book.pdf.url }}" class="btn btn-outline-primary" target="_blank" style="width: 50%; float:right;">Read Book</a>
@@ -43,7 +43,7 @@
             <h6>plot</h6>
             <p>{{plot_rating.plot__avg}}</p>
         </div>
-        <p>{{rating_form.comment}} comment</p>
+        
     </div>
     <div class="row">
         <div class="col-md-12">

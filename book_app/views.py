@@ -140,4 +140,4 @@ def rate(request,book_id):
     else:
         rate_form = RatingForm()
 
-    return render(request, 'review.html',{'current_user':current_user,'rate_form':rate_form,'book':book})
+    return render(request, 'review.html',{'current_user':current_user,'rate_form':rate_form,'book':book })

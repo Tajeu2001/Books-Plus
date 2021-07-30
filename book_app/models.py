@@ -13,6 +13,8 @@ class Profile(models.Model):
     contact = models.CharField(blank=True, max_length=120)
     location = models.CharField(max_length=60, blank=True)
 
+
+
     def __str__(self):
         return f'{self.user.username} Profile'
 
@@ -63,7 +65,7 @@ class Rating(models.Model):
     overall_score = models.IntegerField(blank=True,default=0)
     book = models.ForeignKey(Book,on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    comment = models.TextField()
+    
 
     def __str__(self):
         return f'{self.book.title} ratings'
