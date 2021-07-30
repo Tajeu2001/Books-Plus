@@ -4,9 +4,10 @@
 {% load mathfilters %}
 {% block content %}
 <div class="container">
-	<div class="card" style="padding:4rem;">
+	<div class="card mt-4" style="padding:4rem;background-color: rgba(128, 128, 128, 0.178);">
+        <p style="font-size:3rem; font-weight: 900;text-align: center;">{{book.title}}</p><hr>
 		<img src="{{book.cover.url}}" alt="cover" style="height:35rem;">
-		<p>Title:{{book.title}}</p><hr>
+		
 		<p>Author:{{book.author}}</p><hr>
 		<p>Description:{{book.description}}</p><hr>
 		<p>Year of Publication{{book.year}}</p><hr>

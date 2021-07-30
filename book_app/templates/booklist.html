@@ -6,7 +6,7 @@
     <div class="row">
 
 
-        <div class="modal fade" id="imageUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        <div class="modal fade" style="background-color: rgba(128, 128, 128, 0.15);" id="imageUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -30,10 +30,11 @@
             </div>
         </div>
     </div>
-
+    <hr>
     <button class="btn btn-sm btn-outline-primary ml-4 mb-3 create" data-toggle="modal" data-target="#imageUpload ">
         Upload Book
     </button>
+    <hr>
 
 
     <div class="row">
@@ -52,6 +53,7 @@
             {% endfor %}
         
     </div>
+    <hr>
 </div>
 
 {% endblock %}

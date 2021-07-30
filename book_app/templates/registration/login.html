@@ -9,7 +9,7 @@
       {% if form.errors %}
       <p> Password or Username is incorrect </p>
       {% endif %}
-      <div class="panel panel-default card" style="background-color:grey ; padding: 15px;">
+      <div class="panel panel-default card" style="background-color:rgba(128, 128, 128, 0.144); padding: 15px;">
 
         <div class="panel-heading">
           <h3 class="text-center">Sign In</h3>
@@ -21,7 +21,7 @@
             {% bootstrap_form form%}
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+              <input type="submit" class="btn peach-gradient btn-sm" value="Login">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
