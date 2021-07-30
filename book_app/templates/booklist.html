@@ -41,8 +41,8 @@
         
             {% for book in books %}
             <div class="col-md-3">
-                <div class="card booklist">
-                    <img src="{{book.cover.url}}" alt="cover">
+                <div class="card booklist" style="margin-bottom: 1rem;">
+                    <img src="{{book.cover.url}}" alt="cover" height="280px">
                     <hr>
                     <h3 ><a href="{% url 'book' book_id=book.id  %}" style="color:#f77f00">{{book.title}} title</a></h3>
                     <hr>
